@@ -2,7 +2,10 @@ package com.DH.proyectoDHecommerce.controller;
 
 import com.DH.proyectoDHecommerce.dto.OrdersDTO;
 import com.DH.proyectoDHecommerce.model.Order;
+import com.DH.proyectoDHecommerce.model.OrderItem;
+import com.DH.proyectoDHecommerce.model.Product;
 import com.DH.proyectoDHecommerce.service.OrderService;
+import com.DH.proyectoDHecommerce.service.ProductService;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
@@ -13,10 +16,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 import java.util.List;
@@ -27,6 +27,9 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/getById/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable Integer id) {
@@ -61,5 +64,6 @@ public class OrderController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=orders.csv")
                 .body(resource);
     }
+
 }
 
