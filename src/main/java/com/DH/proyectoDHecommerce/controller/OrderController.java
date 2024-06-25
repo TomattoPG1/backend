@@ -1,6 +1,7 @@
 package com.DH.proyectoDHecommerce.controller;
 
 import com.DH.proyectoDHecommerce.dto.OrdersDTO;
+import com.DH.proyectoDHecommerce.dto.OrdersbyUsersDTO;
 import com.DH.proyectoDHecommerce.model.Order;
 import com.DH.proyectoDHecommerce.model.OrderItem;
 import com.DH.proyectoDHecommerce.model.Product;
@@ -62,6 +63,29 @@ public class OrderController {
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType("text/csv"))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=orders.csv")
+                .body(resource);
+    }
+
+
+    @GetMapping("/reportSalesByUser/csv")
+    public ResponseEntity<InputStreamResource> exportSalesByUserToCsv() throws IOException {
+        List<OrdersbyUsersDTO> salesByUsers = orderService.getSalesByUser();
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream))) {
+            StatefulBeanToCsv<OrdersbyUsersDTO> beanToCsv = new StatefulBeanToCsvBuilder<OrdersbyUsersDTO>(writer)
+                    .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
+                    .build();
+            beanToCsv.write(salesByUsers);
+        } catch (CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+            e.printStackTrace();
+        }
+
+        InputStreamResource resource = new InputStreamResource(new ByteArrayInputStream(outputStream.toByteArray()));
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("text/csv"))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=ordenesPorCliente.csv")
                 .body(resource);
     }
 

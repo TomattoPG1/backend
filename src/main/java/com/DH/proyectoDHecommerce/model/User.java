@@ -23,10 +23,21 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserAddress> addresses;
+
+    public List<UserAddress> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<UserAddress> addresses) {
+        this.addresses = addresses;
+    }
+
     public User() {
     }
 
-    public User(Integer id, String name, String email, String emailVerified, String password, String role, String image, List<Order> orders) {
+    public User(Integer id, String name, String email, String emailVerified, String password, String role, String image, List<Order> orders, List<UserAddress> addresses) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -35,6 +46,7 @@ public class User {
         this.role = role;
         this.image = image;
         this.orders = orders;
+        this.addresses = addresses;
     }
 
     public Integer getId() {
