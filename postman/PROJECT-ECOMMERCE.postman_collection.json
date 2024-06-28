@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "0ac3b10f-6853-4caf-adb2-cef352f7b05d",
+		"name": "PROJECT-ECOMMERCE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21866455"
+	},
+	"item": [
+		{
+			"name": "orders/getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orders/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orders/getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orders/getById",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"getById"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/export/csv",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "/export/csv",
+					"path": [
+						"export",
+						"csv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/products/1/order?orderedQuantity=+5",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/1/order?orderedQuantity=+5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"1",
+						"order"
+					],
+					"query": [
+						{
+							"key": "orderedQuantity",
+							"value": "+5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/products/1/stock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/1/stock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"1",
+						"stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products/1/updateStock?newStock=20",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/1/updateStock?newStock=300",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"1",
+						"updateStock"
+					],
+					"query": [
+						{
+							"key": "newStock",
+							"value": "300"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/users/export",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/users/export",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"export"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/orders/reportSalesByUser/csv",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orders/reportSalesByUser/csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"reportSalesByUser",
+						"csv"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
